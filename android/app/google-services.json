@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "386185044245",
+    "project_id": "greenrank-bd7fb",
+    "storage_bucket": "greenrank-bd7fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386185044245:android:37a29b820bc29b3c2b891c",
+        "android_client_info": {
+          "package_name": "com.example.green_rank"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXAA4iZoYEmEZIHzAxtqiEa3LVRFHRwK4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
