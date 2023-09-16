@@ -53,7 +53,7 @@ class AuthController extends GetxController
   }
 
   // It will verify the otp
-  verifyOtp(context) async
+  verifyOtpnewUser(context) async
   {
     String otp = otpController;
     try
@@ -70,6 +70,31 @@ class AuthController extends GetxController
               'phone': phoneController.text.toString(),
               'imageUrl': "",
               'points': 0   // To show in LeaderBoard
+            }, SetOptions(merge: true)
+        );
+        VxToast.show(context, msg: "Logged In");
+        Get.offAll(() => const HomeScreen(), transition: Transition.downToUp);
+      }
+    }
+    catch (e)
+    {
+      VxToast.show(context, msg: e.toString());
+    }
+  }
+
+  verifyOtpoldUser(context) async
+  {
+    String otp = otpController;
+    try
+    {
+      PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(verificationId: verificationID, smsCode: otp);
+      final User? user = (await auth.signInWithCredential(phoneAuthCredential)).user;  // auth = FirebaseAuth.instance
+      if(user != null)
+      {
+        DocumentReference store1 = FirebaseFirestore.instance.collection("UserRecord").doc(phoneController.text.toString());
+        await store1.set(
+            {
+              'phone': phoneController.text.toString()
             }, SetOptions(merge: true)
         );
         VxToast.show(context, msg: "Logged In");

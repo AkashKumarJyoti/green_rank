@@ -1,10 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:green_rank/Intro_page/intro_page.dart';
 import 'package:green_rank/Profile_Screen/profile_screen.dart';
-import 'package:green_rank/authentication/username.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../utils/firebase_variables.dart';
 
 Widget drawer(Map<String, dynamic> data) {
@@ -65,7 +64,7 @@ Widget drawer(Map<String, dynamic> data) {
               title: "Logout".text.semiBold.white.size(16).make(),
               onTap: () async {
                 await auth.signOut();
-                Get.offAll(() => const Username());
+                Get.offAll(() => const LoginSignUp());
               },
             )
           ],

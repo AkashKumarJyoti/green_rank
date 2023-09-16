@@ -1,18 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'auth_controller.dart';
 
-class VerificationScreen extends StatefulWidget {
-  const VerificationScreen({Key? key}) : super(key: key);
+class LogIn extends StatefulWidget {
+  const LogIn({Key? key}) : super(key: key);
 
   @override
-  State<VerificationScreen> createState() => _VerificationScreenState();
+  State<LogIn> createState() => _LogInState();
 }
 
-class _VerificationScreenState extends State<VerificationScreen> {
-  String s = "Let's Connect";
+class _LogInState extends State<LogIn> {
+  String s = "Let's Re-Connect";
   final _formKey = GlobalKey<FormState>();
   var controller = Get.put(AuthController());
 
@@ -139,17 +140,32 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     padding: const EdgeInsets.all(16.0)
                 ),
                 onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    if (controller.isOtpSent.value == false) {
-                      controller.is_fetching.value = true;  // To show the CircularProgressIndicator
-                      await controller.sendOtp();  // controller.is_fetching.value will be false after it executed
-                      setState(() {
-                        s = controller.str.value;
-                      });
-                    }
-                    else {
-                      controller.is_fetching.value = true;
-                      await controller.verifyOtp(context);
+                  if(_formKey.currentState!.validate())
+                  {
+                    var userExist = await checkUserExists(controller.phoneController.value.text);
+                    {
+                      if(userExist)
+                      {
+                        if (controller.isOtpSent.value == false) {
+                          controller.is_fetching.value = true;  // To show the CircularProgressIndicator
+                          await controller.sendOtp();  // controller.is_fetching.value will be false after it executed
+                          setState(() {
+                            s = controller.str.value;
+                          });
+                        }
+                        else {
+                          controller.is_fetching.value = true;
+                          await controller.verifyOtpoldUser(context);
+                        }
+                      }
+                      else
+                      {
+                          VxToast.show(context, msg: "User don't exists, please do sign up", bgColor: Colors.red, textColor: Colors.white, textSize: 15);
+                          setState(()
+                          {
+                            controller.phoneController.clear();
+                          });
+                      }
                     }
                   }
                 },
@@ -171,5 +187,21 @@ class _VerificationScreenState extends State<VerificationScreen> {
         ),
       ),
     );
+  }
+
+  // Check user exists
+  Future<bool> checkUserExists(String number) async {
+    try {
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('UserRecord')
+          .where('phone', isEqualTo: number)
+          .limit(1)
+          .get();
+
+      return querySnapshot.docs.isNotEmpty;
+    } catch (e) {
+      print('Error checking username: $e');
+      return false;
+    }
   }
 }

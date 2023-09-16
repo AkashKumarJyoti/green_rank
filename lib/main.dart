@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:green_rank/authentication/username.dart';
+import 'package:green_rank/splash/splash_screen.dart';
 import 'package:green_rank/utils/firebase_variables.dart';
 import 'home_screen/home_screen.dart';
 
@@ -26,36 +27,12 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var is_login = false;
-  checkUser() async
-  {
-    auth.authStateChanges().listen((User? user)
-    {
-      if(user == null && mounted)
-      {
-        setState(() {
-          is_login = false;
-        });
-      }
-      else
-      {
-        setState(() {
-          is_login = true;
-        });
-      }
-    });
-  }
-  @override
-  void initState() {
-    super.initState();
-    checkUser();
-  }
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(fontFamily: "lato"),
       debugShowCheckedModeBanner: false,
-      home: is_login == true ? const HomeScreen() : const Username(),  // Change the name of file
+      home: SplashScreen(),  // Change the name of file
       title: "Green Rank",
     );
   }

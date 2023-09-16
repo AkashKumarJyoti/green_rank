@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:green_rank/authentication/auth_controller.dart';
-import 'package:green_rank/authentication/logIn_page.dart';
+import 'package:green_rank/authentication/sign_up.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:get/get.dart';
 
