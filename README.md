@@ -1,16 +1,32 @@
 # green_rank
 
-A new Flutter project.
+# Green Rank App 🌿
 
-## Getting Started
+Welcome to the Sustainability Leaderboard App, a mobile application built with Flutter that empowers users to log points for sustainable actions, set profile photos from the gallery or camera, and view a leaderboard ranking users based on their points.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- User-friendly interface for logging sustainable actions.
+- Phone OTP verification for user authentication.
+- Profile image upload from gallery or camera.
+- Attractive leaderboard showcasing top users by points.
+- List of activities through which users can earn and log points.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Screenshots
+<p float="left">
+  <img src="https://github.com/AkashKumarJyoti/images/blob/master/Green%20Rank/Img1.jpg" width="350" height="600" />
+  <img src="https://github.com/AkashKumarJyoti/images/blob/master/Green%20Rank/Img2.jpg" width="350" height="600" />
+</p>
+<p float="left">
+  <img src="https://github.com/AkashKumarJyoti/images/blob/master/Green%20Rank/Img3.jpg" width="350" height="600" />
+  <img src="https://github.com/AkashKumarJyoti/images/blob/master/Green%20Rank/Img4.jpg" width="350" height="600" />
+</p>
+<p float="left">
+  <img src="https://github.com/AkashKumarJyoti/images/blob/master/Green%20Rank/Img5.jpg" width="350" height="600" />
+  <img src="https://github.com/AkashKumarJyoti/images/blob/master/Green%20Rank/Img6.jpg" width="350" height="600" />
+</p>
+<p float="left">
+  <img src="https://github.com/AkashKumarJyoti/images/blob/master/Green%20Rank/Img7.jpg" width="350" height="600" />
+  <img src="https://github.com/AkashKumarJyoti/images/blob/master/Green%20Rank/Img8.jpg" width="350" height="600" />
+</p>
